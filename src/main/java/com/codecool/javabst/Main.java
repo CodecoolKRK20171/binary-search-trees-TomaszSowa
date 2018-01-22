@@ -23,7 +23,10 @@ public class Main {
 
         myTree.add(21344);
 
+        System.out.println(myTree.search(95)); // should be true
         myTree.remove(93);
+        System.out.println(myTree.search(93)); // should be true
+        System.out.println(myTree.search(95)); // should be true
 
         System.out.println("done");
     }
