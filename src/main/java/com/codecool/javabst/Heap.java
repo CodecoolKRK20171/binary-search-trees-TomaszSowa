@@ -17,9 +17,9 @@ public class Heap {
     private boolean hasRightChild(int index) { return getRightChildIndex(index) < size;}
     private boolean hasParent(int index) { return getParentIndex(index) >= 0;}
 
-    private int LeftChild(int index) { return items[getLeftChildIndex(index)];}
-    private int RightChild(int index) { return items[getRightChildIndex(index)] ;}
-    private int Parent(int index) { return items[getParentIndex(index)];}
+    private int leftChild(int index) { return items[getLeftChildIndex(index)];}
+    private int rightChild(int index) { return items[getRightChildIndex(index)] ;}
+    private int parent(int index) { return items[getParentIndex(index)];}
 
     private void swap(int indexOne, int indexTwo) {
         int temp = items[indexOne];
@@ -57,7 +57,7 @@ public class Heap {
 
     private void heapifyUp() {
         int index = size - 1;
-        while (hasParent(index) && Parent(index) > items[index]) {
+        while (hasParent(index) && parent(index) > items[index]) {
             swap(getParentIndex(index), index);
             index = getParentIndex(index);
         }
@@ -68,7 +68,7 @@ public class Heap {
         int index = 0;
         while (hasLeftChild(index)) {
             int smallerChildIndex = getLeftChildIndex(index);
-            if (hasRightChild(index) && RightChild(index) < LeftChild(index)) {
+            if (hasRightChild(index) && rightChild(index) < leftChild(index)) {
                 smallerChildIndex = getRightChildIndex(index);
             }
             if (items[index] < items[smallerChildIndex]) {
