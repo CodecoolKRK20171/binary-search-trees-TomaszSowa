@@ -56,8 +56,27 @@ public class Heap {
     }
 
     private void heapifyUp() {
+        int index = size - 1;
+        while (hasParent(index) && Parent(index) > items[index]) {
+            swap(getParentIndex(index), index);
+            index = getParentIndex(index);
+        }
+
     }
 
     private void heapifyDown() {
+        int index = 0;
+        while (hasLeftChild(index)) {
+            int smallerChildIndex = getLeftChildIndex(index);
+            if (hasRightChild(index) && RightChild(index) < LeftChild(index)) {
+                smallerChildIndex = getRightChildIndex(index);
+            }
+            if (items[index] < items[smallerChildIndex]) {
+                break;
+            } else {
+                swap(index, smallerChildIndex);
+            }
+            index = smallerChildIndex;
+        }
     }
 }
